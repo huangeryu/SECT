@@ -1,0 +1,93 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:1:1-23:12
+	package
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:2:5-28
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:1:11-69
+	android:versionCode
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:3:1-62
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:3:18-60
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:4:5-78
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:4:22-76
+application
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:5:5-21:19
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Lenovo\.android\build-cache\87f9c9fa098146d80c545c7a92b48976f75c7ff5\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Lenovo\.android\build-cache\0e698de3e97a82c61aa1ce7e53778a01703f6cfc\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Lenovo\.android\build-cache\a5dd5a34a5722d5f4a4b41d1309bbaba1187a295\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Lenovo\.android\build-cache\cfbb899ec144ff1bae9b8586a816028748ed7cf3\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Lenovo\.android\build-cache\9a7902661168b4c35bde783caaa8b9360397d87c\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Lenovo\.android\build-cache\9a2e68878face81088b8df361bcb5a30fbc68cd2\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Lenovo\.android\build-cache\7dca31490fdfe307a055f4e78f22aae06901b0cb\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Lenovo\.android\build-cache\b436b2feb7c9bf8692e7a5e8a561a6bce2ae6407\output\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Lenovo\.android\build-cache\64fc63aef16223bfe3343c4fe8c35c54c8a25c1f\output\AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:9:9-35
+	android:allowBackup
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:10:9-40
+activity#com.ustc.sect.activity.Welcome
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:11:9-16:20
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:11:19-51
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:12:13-15:29
+action#android.intent.action.MAIN
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:13:17-68
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:13:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:14:17-76
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:14:27-74
+activity#com.ustc.sect.activity.Login
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:17:9-51
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:17:19-49
+activity#com.ustc.sect.activity.MainScreen
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:18:9-56
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:18:19-54
+service#com.ustc.sect.despatcher.SendMessageService
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:19:9-65
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:19:18-63
+activity#com.ustc.sect.activity.ChatRoom
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:20:9-54
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:20:19-52
+uses-sdk
+INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Lenovo\.android\build-cache\87f9c9fa098146d80c545c7a92b48976f75c7ff5\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Lenovo\.android\build-cache\0e698de3e97a82c61aa1ce7e53778a01703f6cfc\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Lenovo\.android\build-cache\a5dd5a34a5722d5f4a4b41d1309bbaba1187a295\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Lenovo\.android\build-cache\cfbb899ec144ff1bae9b8586a816028748ed7cf3\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Lenovo\.android\build-cache\9a7902661168b4c35bde783caaa8b9360397d87c\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Lenovo\.android\build-cache\9a2e68878face81088b8df361bcb5a30fbc68cd2\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Lenovo\.android\build-cache\7dca31490fdfe307a055f4e78f22aae06901b0cb\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Lenovo\.android\build-cache\b436b2feb7c9bf8692e7a5e8a561a6bce2ae6407\output\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Lenovo\.android\build-cache\64fc63aef16223bfe3343c4fe8c35c54c8a25c1f\output\AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Lenovo\.android\build-cache\87f9c9fa098146d80c545c7a92b48976f75c7ff5\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml

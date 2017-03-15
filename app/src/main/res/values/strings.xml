@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">SECT</string>
+    <!--welcome-->
+    <string name="slide_distance">25.0</string>
+    <!--login.xml-->
+    <string name="login_username">用户名:</string>
+    <string name="login_passwd">密  码:</string>
+    <string name="login_passwd_hint">请输入密码</string>
+    <string name="login_username_hint">请输入用户名</string>
+    <string name="login_loginButton">登入</string>
+    <string name="long_exitButton">退出</string>
+    <!--main screen.xml-->
+    <string name="sessionTitle">消息</string>
+    <string name="friendsTitle">联系人</string>
+    <string name="myselfTitle">我的信息</string>
+    <string name="myselfLabel">我的</string>
+    <!--login.java-->
+    <string name="nameFormError">用户名格式不正确</string>
+    <string name="passwdFormError">密码至少包含一个字母和数字</string>
+    <string name="netUnavailable">网络连接不可用</string>
+    <string name="URL">http://115.28.180.236:8080/SECTServer/</string>
+    <string name="server_ip">115.28.180.236</string>
+    <!--MainThread.java-->
+    <string name="Native_servlet_port">43210</string>
+    <!--General.java-->
+    <string name="Server_port">9999</string>
+    <string name="Server_ID">1000</string>
+    <!--session_dialog.xml-->
+    <string name="Enter">进入</string>
+    <string name="ToTop">置顶</string>
+    <string name="delete_session">删除</string>
+    <string name="cancel_toTop">取消置顶</string>
+    <!--chatroomm.xml-->
+    <string name="default_name">姓名/群名</string>
+    <string name="return_label">返回</string>
+    <string name="default_message">这里输入消息</string>
+    <string name="default_sendMessage">发送</string>
+</resources>
