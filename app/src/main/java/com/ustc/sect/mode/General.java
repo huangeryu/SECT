@@ -6,12 +6,17 @@ import android.content.res.Resources;
 import android.graphics.RectF;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.os.Environment;
+import android.os.Looper;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.ustc.sect.R;
 import com.ustc.sect.database.DatabaseOperation;
 import com.ustc.sect.fragments.Session;
+
+import org.jetbrains.annotations.Contract;
 
 import java.io.IOException;
 import java.net.Inet6Address;
@@ -41,9 +46,15 @@ import java.util.concurrent.Executors;
 
 public class General
 {
+    //定义Message的type字段
+    public static final int ONLY_PICTURE=151245;
+    public static final int ONLY_TEXT=151234;
+    public static final int ONLY_PERSON=161267;
+    public static final int HEARTBEAT=150000;
+    public static String ENCODE_MODE="UTF-16";//String 类的编码和解码方式
+    public static volatile boolean isLogout=false;
     public static final int Activity_Result_OK = 1;
     public static final int Activity_ChatRoom = 1000;
-    public static final int Activity_MainScreen = 1001;
     public static final int RequestUpdate=10;
     public static final int Session_Fragment = 0;
     public static final int Friends_Fragment = 1;
@@ -56,7 +67,7 @@ public class General
     //记录置顶的sessionItem的数量
     public static volatile int toppedSum = -1;
     //记录用户的ID，该ID也是数据库名
-    public static volatile String userID;
+    public static volatile int userID;
     //记录上下文
     public static volatile Context context;
     //记录主界面的Activity，用于挂在alterDialog
@@ -65,14 +76,22 @@ public class General
     public static Map<String, MessageQueue> messageQueueMap;
     //声明一个线程池
     private static ExecutorService pool;
-
     public static ExecutorService getThreadPool()
     {
         if (pool == null)
         {
             pool = Executors.newCachedThreadPool();
         }
+        else if (pool.isShutdown())
+        {
+            pool=Executors.newCachedThreadPool();
+        }
         return pool;
+    }
+    public static Cancel_SendMessage cancel_sendMessage=null;
+    public interface Cancel_SendMessage
+    {
+        void cancel();
     }
     public static volatile boolean NetWorkAvailable=true;
     //检查网络可用性
@@ -112,13 +131,13 @@ public class General
     //定义一个用来存放数据的静态同步方法
     public static synchronized void saveMessage(Message message)
     {
-        String from = message.getFrom();
-        if (userID.equals(message.getFrom()))
+        int from = message.getFrom();
+        if (userID==message.getFrom())
         {
             from = message.getTo();
         }
         DatabaseOperation databaseOperation = DatabaseOperation.getDatabaseOperation();
-        databaseOperation.isTableExist(from, message);
+        databaseOperation.isTableExist(from+"", message);
     }
 
     //定义一个更新session的接口
@@ -265,5 +284,50 @@ public class General
         }
         return hostIp;
     }
-
+    //字节数组转int
+    public static int bytesToInt(byte[] bytes, int off)
+    {
+        int value=0;
+        for(int i=0;i<4;i++)
+        {
+            value|=(bytes[off+i]&0xFF)<<8*(3-i);
+        }
+        return value;
+    }
+    //字节转long
+    public static long bytesToLong(byte[] bytes,int off)
+    {
+        long value=0L;
+        for(int i=0;i<8;i++)
+        {
+            value|=(long) (bytes[i+off]&0xFF)<<8*(7-i);
+        }
+        return value;
+    }
+    //long转byte[]
+   public static byte[] longToBytes(byte[] bytes,int off,long data)
+    {
+        for(int i=0;i<8;i++)
+        {
+            bytes[off+i]=(byte) ((data>>8*(7-i))&0xFF);
+        }
+        return bytes;
+    }
+    //int 转byte[]
+    public static byte[] intToBytes(byte[] bytes,int off,int data)
+    {
+        for(int i=0;i<4;i++)
+        {
+            bytes[off+i]=(byte)((data>>8*(3-i))&0xFF);
+        }
+        return bytes;
+    }
+    public enum TriStatus
+    {
+        SEND_MESSAGE,ADD_FRIEND,EXIT;
+    }
+    public interface CallBack
+    {
+        Bundle callBackBundle(Bundle bundle);
+    }
 }

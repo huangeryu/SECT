@@ -19,6 +19,7 @@ import com.ustc.sect.mode.General;
 import com.ustc.sect.mode.Message;
 import com.ustc.sect.mode.SessionViewHolder;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -143,9 +144,9 @@ public class Session extends Fragment
                 holder.getCount().setText(count+"");
             }
             Message message=(Message)viewMap.get("lastMessage");
-            holder.getLastMessage().setText(message.getTextMessage());
+            holder.getLastMessage().setText(message.getContent());
             holder.getName().setText(userID);
-            holder.getTime().setText(General.dateToString(message.getDate()));
+            holder.getTime().setText(General.dateToString(new Date(message.getDate())));
             convertView.setOnLongClickListener(new SessionItemLongClickListener(Session.this));//这里设置了长按监听
             convertView.setOnClickListener(new SessionItemClickAdaptor(Session.this));//这里设置点击监听
             if (General.toppedSum<position)

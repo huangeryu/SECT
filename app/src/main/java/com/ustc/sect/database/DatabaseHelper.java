@@ -20,11 +20,11 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         //创建朋友表和对话表
-        db.execSQL("create table friends (userID varchar(50),userName varchar(50),describe varchar(500),primary key (userID));");
-        db.execSQL("insert into friends(userID,userName,describe)values('3001','黄玉','他是世界上最帅的人'),('3002','黄二玉','世界上最具有智慧的人'),('3003','黄三亿','不仅仅只有三亿'),('huangyu','黄大玉','noting is impossible');");
+        db.execSQL("create table friends (userID varchar(50),userName varchar(50),describe varchar(500),department varchar(50),email varchar(50),primary key (userID));");
+        db.execSQL("insert into friends(userID,userName,describe)values('3001','黄玉','他是世界上最帅的人'),('3002','黄二玉','世界上最具有智慧的人'),('3003','黄三亿','不仅仅只有三亿'),('3004','黄大玉','noting is impossible');");
         //创建sessionItem与位置的映射表
         db.execSQL("create table sessionPosition (userID varchar(50), position Integer,primary key (userID),foreign key(userID) references friends on delete cascade )");
-        db.execSQL("insert into sessionPosition values('3001',1),('3003',0),('3002',2),('huangyu',3);");
+        db.execSQL("insert into sessionPosition values('3001',1),('3003',0),('3002',2),('3004',3);");
         db.execSQL("create table '3001' (userID varchar(50),sessionDate long,message varchar(500),primary key(userID,sessionDate),"+
                         "foreign key(userID) references friends on delete cascade);");
         db.execSQL("insert into '3001' values('3001',1485437304326,'hello world!301'),('3001',1485487304326,'hello world!黄玉')");
@@ -34,9 +34,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
         db.execSQL("create table '3003' (userID varchar(50),sessionDate long,message varchar(500),primary key(userID,sessionDate),"+
                 "foreign key(userID) references friends on delete cascade);");
         db.execSQL("insert into '3003' values('3001',1485438304326,'hello world!3003'),('3003',1487497394326,'hello world!3001')");
-        db.execSQL("create table 'huangyu' (userID varchar(50),sessionDate long,message varchar(500),primary key(userID,sessionDate),"+
+        db.execSQL("create table '3004' (userID varchar(50),sessionDate long,message varchar(500),primary key(userID,sessionDate),"+
                 "foreign key(userID) references friends on delete cascade);");
-        db.execSQL("insert into 'huangyu' values('huangyu',1485489305326,'hello world!黄玉'),('huangyu',1485487999326,'hello world!')");
+        db.execSQL("insert into '3004' values('3001',1485489305326,'hello world!黄玉'),('3002',1485487999326,'hello world!')");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)

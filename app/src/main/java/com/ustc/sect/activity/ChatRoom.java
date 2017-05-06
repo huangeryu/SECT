@@ -65,7 +65,7 @@ public class ChatRoom extends Activity implements TextWatcher
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after)
     {
-        Log.d("s,start,count,after", "beforeTextChanged:s="+s+",start="+start+",count="+count+",after="+after);
+//        Log.d("s,start,count,after", "beforeTextChanged:s="+s+",start="+start+",count="+count+",after="+after);
     }
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count)
@@ -78,12 +78,12 @@ public class ChatRoom extends Activity implements TextWatcher
        }
         else
            sendButton.setEnabled(false);
-        Log.d("s,start,before,count", "onTextChanged: s="+s+",start="+start+",before="+before+",count="+count);
+//        Log.d("s,start,before,count", "onTextChanged: s="+s+",start="+start+",before="+before+",count="+count);
     }
     @Override
     public void afterTextChanged(Editable s)
     {
-        Log.d("s", "afterTextChanged: "+s);
+//        Log.d("s", "afterTextChanged: "+s);
     }
 //listView的适配器类
     class ChatRoom_ListView_Adaptor extends BaseAdapter implements General.ChatRoom_update
@@ -125,16 +125,16 @@ public class ChatRoom extends Activity implements TextWatcher
         public View getView(int position, View convertView, ViewGroup parent)
         {
             Message message=data[data.length-1-position];
-            if (message.getFrom().equals(General.userID)||message.getFrom().equals("3001"))
+            if (message.getFrom()==General.userID)
             {
                 View layoutView=LayoutInflater.from(ChatRoom.this).inflate(R.layout.chat_item,null);
                 View nativeView=layoutView.findViewById(R.id.native_item);
                 TextView name=(TextView) nativeView.findViewById(R.id.native_name);
-                name.setText(message.getFrom());
+                name.setText(message.getFrom()+"");
                 TextView time=(TextView)nativeView.findViewById(R.id.native_time);
-                time.setText(General.dateToString(message.getDate()));
+                time.setText(General.dateToString(new Date(message.getDate())));
                 TextView content=(TextView)nativeView.findViewById(R.id.native_content);
-                content.setText(message.getTextMessage());
+                content.setText(message.getContent());
                 return nativeView;
             }
             else
@@ -142,11 +142,11 @@ public class ChatRoom extends Activity implements TextWatcher
                 View layoutView=LayoutInflater.from(ChatRoom.this).inflate(R.layout.chat_item,null);
                 View targetView=layoutView.findViewById(R.id.target_item);
                 TextView name=(TextView) targetView.findViewById(R.id.target_name);
-                name.setText(message.getFrom());
+                name.setText(message.getFrom()+"");
                 TextView time=(TextView)targetView.findViewById(R.id.target_time);
-                time.setText(General.dateToString(message.getDate()));
+                time.setText(General.dateToString(new Date(message.getDate())));
                 TextView content=(TextView)targetView.findViewById(R.id.target_content);
-                content.setText(message.getTextMessage());
+                content.setText(message.getContent());
                 return targetView;
             }
         }
@@ -157,7 +157,9 @@ public class ChatRoom extends Activity implements TextWatcher
         public void onClick(View v)
         {
             //把消息放进消息队列中，并发送消息
-            Message message=new Message(General.userID,name,new Date(),editText.getText().toString().trim(),null);
+            Message message=new Message(General.userID,Integer.parseInt(name),new Date().getTime(),editText.getText().toString().trim());
+            Log.d("message", "onClick: "+General.userID+",to= "+name);
+            message.setType(General.ONLY_TEXT);
             General.pull.getMessageChain(name).insertMessage(message);
             update.updateView();
             General.sendMessage.send(message);

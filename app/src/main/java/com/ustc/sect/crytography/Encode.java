@@ -6,13 +6,22 @@ package com.ustc.sect.crytography;
 
 public class Encode
 {
-    private String plaintext;
-    public Encode(String plaintext)
+    private byte[] plaintext;
+    private String str;
+    public Encode(byte[] plaintext)
     {
         this.plaintext=plaintext;
     }
-    public String encode()
+    public Encode(String str)
+    {
+        this.str=str;
+    }
+    public byte[] encode()
     {
         return  this.plaintext;
+    }
+    public String encode_str()
+    {
+        return this.str;
     }
 }

@@ -36,7 +36,7 @@ public class Login extends Activity
 {
     private SharedPreferences sharedPreferences;
     private final String Paths="login";
-    private final String USERNAME_EXPRESS="^[0-9]{8}$";
+    private final String USERNAME_EXPRESS="^[0-9]{4}$";
     private final String PASSWORD_EXPRESS ="^[a-zA-Z0-9]{1,9}";
     private EditText username;
     private EditText password;
@@ -49,7 +49,7 @@ public class Login extends Activity
             if("true".equals(isCorrect))//这里的“true”仅仅表示验证成功，测试时使用
             {
                 //登入成功后开始初始化
-                General.userID=username.getText().toString().trim();
+                General.userID=Integer.parseInt(username.getText().toString().trim());
                 General.context=getApplicationContext();
                 DatabaseOperation.getDatabaseOperation().loadSessionMap();//这里导入数据库中的sessionPosition数据
                 SharedPreferences user=getSharedPreferences(".user",MODE_PRIVATE);
@@ -143,7 +143,7 @@ public class Login extends Activity
                     {
                         out=new PrintWriter(httpURLConnection.getOutputStream(),true);
                         //把用户名和密码加密
-                        String cipherText=new Encode("name="+username.getText().toString()+"&password="+ password.getText().toString()).encode();
+                        String cipherText=new Encode("userID="+username.getText().toString()+"&password="+ password.getText().toString()).encode_str();
                         out.write(cipherText);
                         out.close();
                         in=new Scanner(httpURLConnection.getInputStream());
@@ -156,7 +156,7 @@ public class Login extends Activity
                             {
                                 buffer.append(in.nextLine());
                             }
-                            message.obj=new Decode(buffer.toString()).decode();
+                            message.obj=new Decode(buffer.toString()).decode_str();
                             System.out.println(message.obj);
                             handler.sendMessage(message);
                         }

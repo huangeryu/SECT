@@ -10,12 +10,15 @@ public class User
     private String userName;
     private String describe;
     private String department;
+    private String email;
     public User(){}
-    public User(Integer userID,String userName,String describe,String department)
+    public User(Integer userID,String userName,String describe,String department,String email)
     {
         this.describe=describe;
         this.userID=userID;
         this.userName=userName;
+        this.department=department;
+        this.email=email;
     }
     public User(Integer userID)
     {
@@ -45,6 +48,16 @@ public class User
         this.describe = describe;
         return this;
     }
+    public User setDepartment(String department)
+    {
+        this.department=department;
+        return this;
+    }
+    public User setEmail(String email)
+    {
+        this.email=email;
+        return this;
+    }
     //getter
     public String getUserName()
     {
@@ -59,5 +72,13 @@ public class User
     public Integer getUserID()
     {
         return userID;
+    }
+    public String getDepartment()
+    {
+        return this.department;
+    }
+    public String getEmail()
+    {
+        return this.email;
     }
 }

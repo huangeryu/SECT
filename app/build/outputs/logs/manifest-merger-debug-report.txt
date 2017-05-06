@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:1:1-23:12
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:1:1-28:12
 	package
 		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:2:5-28
 		INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml
@@ -21,8 +21,12 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:4:5-78
 	android:name
 		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:4:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:5:5-80
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:5:22-78
 application
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:5:5-21:19
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:6:5-26:19
 MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Lenovo\.android\build-cache\87f9c9fa098146d80c545c7a92b48976f75c7ff5\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Lenovo\.android\build-cache\0e698de3e97a82c61aa1ce7e53778a01703f6cfc\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Lenovo\.android\build-cache\a5dd5a34a5722d5f4a4b41d1309bbaba1187a295\output\AndroidManifest.xml:25:5-20
@@ -33,45 +37,51 @@ MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\Users\Lenov
 MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\Users\Lenovo\.android\build-cache\b436b2feb7c9bf8692e7a5e8a561a6bce2ae6407\output\AndroidManifest.xml:23:5-20
 MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Lenovo\.android\build-cache\64fc63aef16223bfe3343c4fe8c35c54c8a25c1f\output\AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:9:9-41
 	android:supportsRtl
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:9:9-35
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:10:9-35
 	android:allowBackup
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:7:9-35
 	android:icon
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:7:9-43
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:8:9-43
 	android:theme
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:10:9-40
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:11:9-40
 activity#com.ustc.sect.activity.Welcome
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:11:9-16:20
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:12:9-17:20
 	android:name
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:11:19-51
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:12:19-51
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:12:13-15:29
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:13:13-16:29
 action#android.intent.action.MAIN
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:13:17-68
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:14:17-68
 	android:name
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:13:25-66
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:14:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:14:17-76
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:15:17-76
 	android:name
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:14:27-74
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:15:27-74
 activity#com.ustc.sect.activity.Login
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:17:9-51
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:18:9-51
 	android:name
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:17:19-49
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:18:19-49
 activity#com.ustc.sect.activity.MainScreen
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:18:9-56
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:19:9-56
 	android:name
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:18:19-54
-service#com.ustc.sect.despatcher.SendMessageService
-ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:19:9-65
-	android:name
-		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:19:18-63
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:19:19-54
 activity#com.ustc.sect.activity.ChatRoom
 ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:20:9-54
 	android:name
 		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:20:19-52
+receiver#com.ustc.sect.mode.NetWorkListener
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:21:9-25:24
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:21:19-55
+intent-filter#android.net.conn.CONNECTIVITY_CHENGE
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:22:13-24:29
+action#android.net.conn.CONNECTIVITY_CHENGE
+ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:23:17-78
+	android:name
+		ADDED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml:23:25-76
 uses-sdk
 INJECTED from D:\AndroidStudioProjects\SECT\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:24.2.1] C:\Users\Lenovo\.android\build-cache\87f9c9fa098146d80c545c7a92b48976f75c7ff5\output\AndroidManifest.xml:21:5-23:78

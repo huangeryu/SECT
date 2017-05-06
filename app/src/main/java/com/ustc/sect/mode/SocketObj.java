@@ -1,5 +1,7 @@
 package com.ustc.sect.mode;
 
+import android.util.Log;
+
 import com.ustc.sect.R;
 
 import java.io.IOException;
@@ -37,11 +39,14 @@ public class SocketObj
         {
             connectCount--;
             socket.connect(address);
+            socket.setTcpNoDelay(true);
+            socket.setKeepAlive(true);
         }catch (IOException e)
         {
             //尝试重新连接
             if (connectCount>0)
             {
+                Log.d("socket", "connect: 重连！");
                 this.socket=new Socket();
                 connect();
             }

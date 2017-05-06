@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 //这个类用来发送消息，发送心跳包，消息存储，对数据的存储使用了同步机制可能效率比较低，
 //当该程序反应慢时需要检查该类
 //需要确保该类在用户成功登入后，login activity销毁前实例化
-public class SendMessageService extends Thread
+public class SendMessageService extends Thread implements General.Cancel_SendMessage
 {
     private Context context;
     private Message heartBeat;
@@ -44,23 +44,26 @@ public class SendMessageService extends Thread
     private volatile long intervalTime;
     private static SocketObj socketObject;
     private   Handler handler;
-
+    private Looper myLooper;
     //构造器
     public SendMessageService()
     {
         this.context= General.context;
-        heartBeat=new Message(General.userID,context.getString(R.string.Server_ID),
-                null,null,null);
+        General.cancel_sendMessage=this;
+        heartBeat=new Message(General.userID,Integer.parseInt(context.getString(R.string.Server_ID)),
+                General.HEARTBEAT);
         timer=new Timer();
         intervalTime=0;
         timer.schedule(new HeartBeat(),500,300000);//这里设置了心跳包的间隔时间为5分钟
         socketObject= SocketObj.getSocketObj();
         General.sendMessage=new SendMessageBinder();
     }
+
     @Override
     public void run()
     {
         Looper.prepare();
+        this.myLooper=Looper.myLooper();
         handler=new Handler()
         {
             @Override
@@ -68,12 +71,19 @@ public class SendMessageService extends Thread
             {
                 //这里处理发送消息
                 Bundle bundle = message.getData();
-                String jsonString = bundle.getString("message");
-                Log.d("jsonString","handleMessage:"+jsonString);
-                new Thread(new SendMessageThread(jsonString)).start();
+                byte[] content = bundle.getByteArray("message");
+//                Log.d("jsonString","handleMessage:"+jsonString);
+                General.getThreadPool().submit(new SendMessageThread(content));
             }
         };
         Looper.loop();
+    }
+
+    @Override
+    public void cancel()
+    {
+        if(this.myLooper!=null)
+            myLooper.quit();//强制退出looper
     }
 
     class SendMessageBinder  implements General.SendMessage
@@ -82,8 +92,8 @@ public class SendMessageService extends Thread
         public void send(final Message message)//这里的message为自定义的
         {//这个方法的作用是把message发送到looper中，并且放入数据库中
             Bundle bundle=new Bundle();
-            String jsonString=new Encode(message.getJsonStringFromMessage()).encode();
-            bundle.putString("message",jsonString);
+            byte[] content=new Encode(message.messageTobyte()).encode();
+            bundle.putByteArray("message",content);
             android.os.Message sMessage= android.os.Message.obtain();
             sMessage.setData(bundle);
             handler.sendMessage(sMessage);
@@ -128,20 +138,20 @@ public class SendMessageService extends Thread
 //    }
     class SendMessageThread implements Runnable
     {
-        private String messageString;
+        private byte[] message;
         private Integer count=10;
-        public SendMessageThread(String s)
+        public SendMessageThread(byte[] s)
         {
-            this.messageString=s;
+            this.message=s;
         }
         public SendMessageThread(Message message)
         {
-            this.messageString=message.getJsonStringFromMessage();
+            this.message=message.messageTobyte();
         }
         @Override
         public void run()
         {
-            if (!socketObject.getSocket().isConnected())socketObject.connect();
+            if (!socketObject.getSocket().isConnected()&&!General.isLogout)socketObject.connect();
             printOut();
         }
         private void printOut()
@@ -149,14 +159,14 @@ public class SendMessageService extends Thread
             try
             {
                 OutputStream outputStream=socketObject.getSocket().getOutputStream();
-                outputStream.write((messageString+"\n").getBytes());
+                outputStream.write(message);
                 outputStream.flush();
                 intervalTime=new Date().getTime();
                 Log.d("state", "printOut: 发送完毕");
             }catch (IOException e)
             {
                 count--;
-                if (count>0)
+                if (count>0&&!General.isLogout)
                 {
                     Log.d("连接", "printOut: "+"再一次连接");
                     socketObject.connect();
@@ -177,11 +187,11 @@ public class SendMessageService extends Thread
             long now=new Date().getTime();
            if (now-intervalTime>=300000)
            {
-               Log.d("时间", "run: "+General.dateToString(new Date(now))+"    "+General.dateToString(new Date(intervalTime)));
+//               Log.d("时间", "run: "+General.dateToString(new Date(now))+"    "+General.dateToString(new Date(intervalTime)));
                android.os.Message message= android.os.Message.obtain();
                Bundle bundle=new Bundle();
-               heartBeat.setDate(new Date());
-               bundle.putString("message",heartBeat.getJsonStringFromMessage());
+               heartBeat.setDate(new Date().getTime());
+               bundle.putByteArray("message",heartBeat.messageTobyte());
                message.setData(bundle);
                handler.sendMessage(message);
            }

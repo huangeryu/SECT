@@ -108,23 +108,23 @@ public class Despatcher  implements Runnable
     }
     private void dispatch(Message message)
     {
-        String name=message.getFrom();
-        if (name.equals(General.userID))
+        int userID=message.getFrom();
+        if (userID==General.userID)
         {
-            name=message.getTo();
+            userID=message.getTo();
         }
-        if(messageQueueMap.containsKey(name))
+        if(messageQueueMap.containsKey(userID+""))
         {
-            MessageQueue messageQueue=messageQueueMap.get(name);
+            MessageQueue messageQueue=messageQueueMap.get(userID+"");
             messageQueue.insertMessage(message);
         }
         else
         {
-            messageQueueMap.put(name,new MessageQueue(name).insertMessage(message));
+            messageQueueMap.put(userID+"",new MessageQueue(userID+"").insertMessage(message));
         }
         if (General.Current_ChatRoom_Name!=null)
         {
-            if (name.equals(General.Current_ChatRoom_Name))
+            if ((userID+"").equals(General.Current_ChatRoom_Name))
             {
                 android.os.Message msg= android.os.Message.obtain();
                 msg.what=General.RequestUpdate;

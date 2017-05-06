@@ -6,13 +6,22 @@ package com.ustc.sect.crytography;
 
 public class Decode
 {
-    private String ciphertext;
-    public Decode(String ciphertext)
+    private byte[] cipherText;
+    private String str;
+    public Decode(byte[] cipherText)
     {
-        this.ciphertext=ciphertext;
+        this.cipherText=cipherText;
     }
-    public String decode()
+    public Decode(String str)
     {
-        return this.ciphertext;
+        this.str=str;
+    }
+    public byte[] decode()
+    {
+        return this.cipherText;
+    }
+    public String decode_str()
+    {
+        return this.str;
     }
 }

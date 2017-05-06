@@ -32,12 +32,28 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\87f9c9fa098146d80c545c7a92b48976f75c7ff5\\output\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
+        "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\default_img.jpg",
+        "source": "D:\\AndroidStudioProjects\\SECT\\app\\src\\main\\res\\drawable\\default_img.jpg"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\filedialog_folder.png",
+        "source": "D:\\AndroidStudioProjects\\SECT\\app\\src\\main\\res\\drawable\\filedialog_folder.png"
+    },
+    {
         "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\87f9c9fa098146d80c545c7a92b48976f75c7ff5\\output\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
+        "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\jpg_form.jpg",
+        "source": "D:\\AndroidStudioProjects\\SECT\\app\\src\\main\\res\\drawable\\jpg_form.jpg"
+    },
+    {
         "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\87f9c9fa098146d80c545c7a92b48976f75c7ff5\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\filedialog_folder_up.png",
+        "source": "D:\\AndroidStudioProjects\\SECT\\app\\src\\main\\res\\drawable\\filedialog_folder_up.png"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
@@ -80,12 +96,20 @@
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\87f9c9fa098146d80c545c7a92b48976f75c7ff5\\output\\res\\drawable\\abc_btn_check_material.xml"
     },
     {
+        "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\line.xml",
+        "source": "D:\\AndroidStudioProjects\\SECT\\app\\src\\main\\res\\drawable\\line.xml"
+    },
+    {
         "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\87f9c9fa098146d80c545c7a92b48976f75c7ff5\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\87f9c9fa098146d80c545c7a92b48976f75c7ff5\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\filedialog_root.png",
+        "source": "D:\\AndroidStudioProjects\\SECT\\app\\src\\main\\res\\drawable\\filedialog_root.png"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
@@ -126,6 +150,10 @@
     {
         "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
         "source": "C:\\Users\\Lenovo\\.android\\build-cache\\87f9c9fa098146d80c545c7a92b48976f75c7ff5\\output\\res\\drawable\\abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pen_form.jpg",
+        "source": "D:\\AndroidStudioProjects\\SECT\\app\\src\\main\\res\\drawable\\pen_form.jpg"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",

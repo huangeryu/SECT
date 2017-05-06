@@ -25,7 +25,7 @@ public class DatabaseOperation
     private DatabaseOperation()
     {
         if (databaseHelper ==null)
-            databaseHelper =new DatabaseHelper(General.context, General.userID);
+            databaseHelper =new DatabaseHelper(General.context, General.userID+"");
         this.databaseOperation=this;
     }
     public static DatabaseOperation getDatabaseOperation()
@@ -56,7 +56,7 @@ public class DatabaseOperation
     }
     public DatabaseOperation createTable(String tableName)
     {//创建表
-        StringBuffer buffer=new StringBuffer();
+        StringBuilder buffer=new StringBuilder();
         buffer.append("create table '").append(tableName)
                 .append("' (userID varchar(50),sessionDate long,message varchar(500),primary key(userID,sessionDate)," +
                 "foreign key(userID) references friends on delete cascade);");
@@ -69,11 +69,18 @@ public class DatabaseOperation
     {//插入消息
 //        insert(message.getFrom(),"userID","sessionDate","message",message.getFrom(),message.getDate().getTime(),message.getTextMessage());
         db=databaseHelper.getWritableDatabase();
-        StringBuffer buffer=new StringBuffer();
-        buffer.append("insert into '").append(message.getFrom()).append("'(userID,sessionDate,message)values('")
-                .append(message.getFrom()).append("',").append(message.getDate().getTime()).append(",'")
-                .append(message.getTextMessage()).append("');");
+        StringBuilder buffer=new StringBuilder();
+        buffer.append("insert into '").append(message.getFrom()+"").append("'(userID,sessionDate,message)values('")
+                .append(message.getFrom()).append("',").append(message.getDate()).append(",'")
+                .append(message.getContent()).append("');");
         db.execSQL(buffer.toString());
+        db.close();
+        return this;
+    }
+    public DatabaseOperation deleteMessage(String userID)
+    {
+        db=databaseHelper.getWritableDatabase();
+        db.execSQL(" drop table ? ;",new Object[]{userID});
         db.close();
         return this;
     }
@@ -89,7 +96,7 @@ public class DatabaseOperation
     }
     public DatabaseOperation insertUser(User user)
     {//这里没有检查返回值
-        insert("friends","describe","userID","userName",user.getDescribe(),user.getUserID(),user.getUserName());
+        insert("friends","describe","userID","userName","department","email",user.getDescribe(),user.getUserID(),user.getUserName(),user.getDepartment(),user.getEmail());
         return this;
     }
     //columns数组前面的是列属性后面的是值属性
@@ -123,19 +130,21 @@ public class DatabaseOperation
         ArrayList<Message> lists=null;
         while(cursor.moveToNext())
         {
-            String from=cursor.getString(cursor.getColumnIndex("userID"));
-            String to;
-            if (from.equals(General.userID))
+            int from=Integer.parseInt(cursor.getString(cursor.getColumnIndex("userID")));
+            int to;
+            if (from==General.userID)
             {
-                to=userID;
+                to=Integer.parseInt(userID);
             }
             else
             {
                 to=General.userID;
             }
-            Date sessionDate=General.longToDate(cursor.getLong(cursor.getColumnIndex("sessionDate")));
+            long sessionDate=cursor.getLong(cursor.getColumnIndex("sessionDate"));
             String s=cursor.getString(cursor.getColumnIndex("message"));
-            Message message=new Message(from,to,sessionDate,s,null);
+            Message message=new Message(from,to,General.ONLY_TEXT);
+            message.setContent(s);
+            message.setDate(sessionDate);
             if (lists==null)
             {
                 lists=new ArrayList<>();
@@ -145,10 +154,24 @@ public class DatabaseOperation
         return lists;
     }
     //这里使用按用户的ID查找，也可以按用户名查找
-    public List<Object> queryUser(String userID)
+    public User queryUser(String userID)
     {
-
-        return null;
+        db=databaseHelper.getReadableDatabase();
+        StringBuilder buffer=new StringBuilder();
+        buffer.append("select * from friends where userID=").append(userID);
+        Cursor cursor=db.rawQuery(buffer.toString(),null);
+        User user=null;
+        if (cursor.moveToNext())
+        {
+            String userName=cursor.getString(cursor.getColumnIndex("userName"));
+            String describe=cursor.getString(cursor.getColumnIndex("describe"));
+            String department=cursor.getString(cursor.getColumnIndex("department"));
+            String email=cursor.getString(cursor.getColumnIndex("email"));
+            user= new User(Integer.parseInt(userID),userName,describe,department,email);
+        }
+        cursor.close();
+        db.close();
+        return user;
     }
     //获取session中的最近一条消息
     public Message getLastMessage(String userID)
@@ -161,11 +184,11 @@ public class DatabaseOperation
         Message message=null;
         if (cursor.moveToNext())
         {
-            String from=cursor.getString(cursor.getColumnIndex("userID"));
-            String to;
-            if (from.equals(General.userID))
+            int from=Integer.parseInt(cursor.getString(cursor.getColumnIndex("userID")));
+            int to;
+            if (from==General.userID)
             {
-                to=userID;
+                to=Integer.parseInt(userID);
             }
             else
             {
@@ -173,7 +196,8 @@ public class DatabaseOperation
             }
             long date=cursor.getLong(cursor.getColumnIndex("sessionDate"));
             String mg=cursor.getString(cursor.getColumnIndex("message"));
-            message=new Message(from,to,General.longToDate(date),mg,null);
+            message=new Message(from,to,date,mg);
+            message.setType(General.ONLY_TEXT);
         }
         cursor.close();
         db.close();
@@ -185,7 +209,7 @@ public class DatabaseOperation
     {
         db=databaseHelper.getReadableDatabase();
         StringBuilder buffer=new StringBuilder();
-        buffer.append("select * from sessionPosition");
+        buffer.append("select * from sessionPosition ;");
         Cursor cursor=db.rawQuery(buffer.toString(),null);
         String[] s=null;
         if (cursor.getCount()!=0)
@@ -201,6 +225,7 @@ public class DatabaseOperation
                 General.sessionPositionMap=new ArrayList<>();
             }
             assert s!=null;
+            Log.d("position", "loadSessionMap: "+position);
            s[position]=userID;
 
         }
@@ -216,7 +241,7 @@ public class DatabaseOperation
         {
             db=databaseHelper.getWritableDatabase();
             db.execSQL("delete from sessionPosition;");
-            StringBuffer buffer=new StringBuffer();
+            StringBuilder buffer=new StringBuilder();
             buffer.append("insert into sessionPosition(userID,position) values(?,?);");
             for (int i=0;i<General.sessionPositionMap.size();i++)
             {
@@ -224,5 +249,11 @@ public class DatabaseOperation
             }
             db.close();
         }
+    }
+    public void deleteSessionMap(String userID)
+    {
+        db=databaseHelper.getWritableDatabase();
+        db.execSQL("delete from sessionPosition where userID=? ;",new Object[]{userID});
+        db.close();
     }
 }

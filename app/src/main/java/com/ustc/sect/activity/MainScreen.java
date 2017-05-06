@@ -89,13 +89,15 @@ public class MainScreen extends Activity
         SharedPreferences.Editor editor=user.edit();
         editor.putString("toTop",General.toppedSum+"");
         editor.apply();
-        Log.d("save", "onPause: "+General.sessionPositionMap.toString()+","+General.toppedSum);
+       // Log.d("save", "onPause: "+General.sessionPositionMap.toString()+","+General.toppedSum);
     }
     public void hideAllFragment()
     {
         FragmentTransaction ft=fmg.beginTransaction();
         if (session!=null)
             ft.hide(session);
+        if(myself!=null)ft.hide(myself);
+        if(friends!=null)ft.hide(friends);
         ft.commit();
     }
     public void selectItem(int id)

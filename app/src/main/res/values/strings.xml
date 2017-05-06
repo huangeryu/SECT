@@ -35,4 +35,25 @@
     <string name="return_label">返回</string>
     <string name="default_message">这里输入消息</string>
     <string name="default_sendMessage">发送</string>
+    <!--myself_fragment.xml-->
+    <string name="edit">编辑</string>
+    <string name="save">保存</string>
+    <string name="UserID">用户ID:</string>
+    <string name="UserName">用户名</string>
+    <string name="department">部　门:</string>
+    <string name="email">iEmail  :</string>
+    <string name="describe">这家伙好懒，什么都没留下！</string>
+    <string name="sendMessage">发送消息</string>
+    <string name="addFriend">添加好友</string>
+    <string name="exit">退出登入</string>
+    <string name="headImage">用户头像</string>
+    <string name="clear_record">清除缓存记录</string>
+    <string name="m_userName">设置用户名</string>
+    <string name="m_describe">设置肺腑之言</string>
+    <string name="m_department">设置部门</string>
+    <string name="m_email">设置邮箱</string>
+    <string name="m_headImage">点击修改头像</string>
+    <string name="clear_finished">聊天记录清理完成</string>
+    <!--FileDialog-->
+    <string name="FileAccessError">访问文件出错！</string>
 </resources>
