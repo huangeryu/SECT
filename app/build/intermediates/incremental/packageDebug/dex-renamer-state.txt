@@ -1,0 +1,7 @@
+#Fri May 05 21:47:10 CST 2017
+base.0=D\:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_c4463c51e04e3f0ae2e9b85a7e293ef3a788d0f6
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=D\:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_bb1337a9299f78dc3c7428fa30d5a211ea65066a\\classes.dex
+base.1=D\:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_bb1337a9299f78dc3c7428fa30d5a211ea65066a
+file.0=D\:\\AndroidStudioProjects\\SECT\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_c4463c51e04e3f0ae2e9b85a7e293ef3a788d0f6\\classes.dex
